@@ -15,13 +15,16 @@ namespace AsyncBreakfast
             Coffee cup = PourCoffee();
             Console.WriteLine("coffee is ready");
 
-            Egg eggs = await FryEggsAsync(2);
+            Task<Egg> eggsTask = FryEggsAsync(2);
+            Egg eggs = await eggsTask;
             Console.WriteLine("eggs are ready");
 
-            Bacon bacon = await FryBaconAsync(3);
+            Task<Bacon> baconTask = FryBaconAsync(3);
+            Bacon bacon = await baconTask;
             Console.WriteLine("bacon is ready");
 
-            Toast toast = await ToastBreadAsync(2);
+            Task<Toast> toastTask = ToastBreadAsync(2);
+            Toast toast = await toastTask;
             ApplyButter(toast);
             ApplyJam(toast);
             Console.WriteLine("toast is ready");
